@@ -1605,6 +1605,7 @@ MonoBehaviour:
   viveCamera: {fileID: 798830143}
   wallReference: {fileID: 1952773532777779179}
   physicalMirror: {fileID: 596029761}
+  VRBody: {fileID: 1062745471}
   hideWallHighestStart: 1.4
   hideWallHighestEnd: 0.8
   hideWallLowestStart: -1.2
@@ -34622,7 +34623,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627962220}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2506eb2f13e6b3a42ad46ac0ccd55206, type: 3}
   m_Name: 
@@ -44101,6 +44102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Myo Armband
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179753060935029866, guid: 3bde4e1f7784c564ab8c4bd6ebc89481,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4179753060935029867, guid: 3bde4e1f7784c564ab8c4bd6ebc89481,
         type: 3}
