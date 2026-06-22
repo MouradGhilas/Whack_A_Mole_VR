@@ -52,6 +52,10 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     private ProfileManager profileManager;
 
+#if !UNITY_ANDROID
+    [SerializeField]
+    private PupilLabs.RecordingController gazeRecorder;
+#endif
     //temporarily serialized field for game test
     [SerializeField]
     private float gameDuration;

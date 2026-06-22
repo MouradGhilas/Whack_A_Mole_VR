@@ -71,6 +71,7 @@ public class LogTracker : MonoBehaviour
         }
         if (trackTrigger)
         {
+#if !UNITY_ANDROID
             trigger = false;
 #if !UNITY_ANDROID
             if (SteamVR.active)
