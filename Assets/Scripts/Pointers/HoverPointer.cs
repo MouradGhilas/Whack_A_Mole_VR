@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if !UNITY_ANDROID
 using Valve.VR;
+#endif
 
 /*
 Basic implementation of the pointer abstract class. Simply changes the color of the laser and 
@@ -35,7 +37,6 @@ public class HoverPointer : Pointer
         RaycastHit hit;
         if (Physics.Raycast(laserOrigin.transform.position + laserOffset, rayDirection, out hit, 100f, Physics.DefaultRaycastLayers))
         {
-            //UpdateLaser(true, hitPosition: laserOrigin.transform.InverseTransformPoint(hit.point), rayDirection: laserOrigin.transform.InverseTransformDirection(rayDirection));
             Vector3 hitPosition = laserOrigin.transform.InverseTransformPoint(hit.point);
             laser.SetPosition(1, hitPosition);
             cursor.SetPosition(hitPosition);
@@ -46,8 +47,8 @@ public class HoverPointer : Pointer
             Vector3 rayPosition = laserOrigin.transform.InverseTransformDirection(rayDirection) * maxLaserLength;
             laser.SetPosition(1, rayPosition);
             cursor.SetPosition(rayPosition);
-            //UpdateLaser(false, rayDirection: laserOrigin.transform.InverseTransformDirection(rayDirection) * maxLaserLength);
         }
+#if !UNITY_ANDROID
         if (SteamVR.active)
         {
             if (hit.collider)
@@ -58,7 +59,6 @@ public class HoverPointer : Pointer
                     Mole.States moleAnswer = mole.GetState();
                     if (moleAnswer == Mole.States.Enabled)
                     {
-
                         if ((Time.time - dwellStartTimer) > dwellTime)
                         {
                             pointerShootOrder++;
@@ -86,6 +86,7 @@ public class HoverPointer : Pointer
                 }
             }
         }
+#endif
     }
 
     // Implementation of the behavior of the Pointer on shoot. 
@@ -110,14 +111,11 @@ public class HoverPointer : Pointer
         shootTimeLeft = duration;
         totalShootTime = duration;
 
-        // Generation of a color gradient from the shooting color to the default color (idle).
         Gradient colorGradient = new Gradient();
         GradientColorKey[] colorKey = new GradientColorKey[2] { new GradientColorKey(laser.startColor, 0f), new GradientColorKey(transitionColor, 1f) };
         GradientAlphaKey[] alphaKey = new GradientAlphaKey[2] { new GradientAlphaKey(laser.startColor.a, 0f), new GradientAlphaKey(transitionColor.a, 1f) };
         colorGradient.SetKeys(colorKey, alphaKey);
 
-        // Playing of the animation. The laser and Cursor color and scale are interpolated following the easing curve from the shooting values (increased size, red/green color)
-        // to the idle values
         while (shootTimeLeft > 0f)
         {
             float shootRatio = (totalShootTime - shootTimeLeft) / totalShootTime;
@@ -140,7 +138,6 @@ public class HoverPointer : Pointer
             yield return null;
         }
 
-        // When the animation is finished, resets the laser and Cursor to their default values. 
         laser.startWidth = laserWidth;
         laser.endWidth = laserWidth;
         laser.startColor = startLaserColor;

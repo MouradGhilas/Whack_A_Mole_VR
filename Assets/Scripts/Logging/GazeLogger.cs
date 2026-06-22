@@ -1,4 +1,5 @@
-﻿using PupilLabs;
+﻿#if !UNITY_ANDROID
+using PupilLabs;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -175,3 +176,4 @@ public class GazeLogger : DataProvider
     }
 
 }
+#endif

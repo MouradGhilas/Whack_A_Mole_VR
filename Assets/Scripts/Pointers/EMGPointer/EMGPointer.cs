@@ -1,3 +1,4 @@
+#if !UNITY_ANDROID
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -175,7 +176,7 @@ public class EMGPointer : Pointer
     }
 
     private bool IsAboveThreshold(float emgIntensity) => (emgIntensity >= (emgThreshold * maxEMG));
-    
+
     public string getThresholdState()
     {
         if (!active)
@@ -264,3 +265,4 @@ public enum EMGPointerBehavior
     LivePrediction,
     Training
 }
+#endif

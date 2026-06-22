@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+#if !UNITY_ANDROID
 using Valve.VR;
+#endif
 
 /*
 Class dedicated to track the object's position and rotation it is attached to. Is called by the TrackerHub to gather datas.
@@ -20,10 +22,10 @@ public class LogTracker : MonoBehaviour
 
     [SerializeField]
     private bool trackTrigger = false;
-
+#if !UNITY_ANDROID
     [SerializeField]
     private SteamVR_Input_Sources controller;
-
+#endif
     private bool isTracking = false;
     private Vector3 rotTravel = Vector3.zero;
     private Vector3 previousRot;
@@ -69,6 +71,7 @@ public class LogTracker : MonoBehaviour
         }
         if (trackTrigger)
         {
+#if !UNITY_ANDROID
             trigger = false;
             if (SteamVR.active)
             {
@@ -77,6 +80,7 @@ public class LogTracker : MonoBehaviour
                     trigger = true;
                 }
             }
+#endif
             datas.Add("Trigger", trigger);
         }
         ResetTravel();
