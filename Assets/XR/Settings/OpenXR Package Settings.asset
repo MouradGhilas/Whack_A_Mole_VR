@@ -281,40 +281,49 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -4397241954374821273}
-  - {fileID: -7982793423611509421}
-  - {fileID: -2921145843794200987}
-  - {fileID: 134112737155014720}
-  - {fileID: 8065944630627627123}
-  - {fileID: 6292005505739579210}
-  - {fileID: -7657196929421559537}
-  - {fileID: -9048752535509138483}
-  - {fileID: -1065653022525279943}
-  - {fileID: 1800708758853517339}
-  - {fileID: -2919225455446554711}
-  - {fileID: 5913794509019645178}
-  - {fileID: 2729558537947466224}
-  - {fileID: 1588366261846502816}
-  - {fileID: 2361654746291130666}
-  - {fileID: 1806842725264975365}
-  - {fileID: 5727944194019591413}
-  - {fileID: 8532711545194996840}
-  - {fileID: 1801537432349716634}
-  - {fileID: -6596850406461546960}
-  - {fileID: 6035886671721676148}
-  - {fileID: 8255481176865886717}
-  - {fileID: -1978226064241052572}
-  - {fileID: -8414715229222728482}
-  - {fileID: 7256314764198355484}
-  - {fileID: 1352449439635938371}
-  - {fileID: 3153342490254276016}
-  - {fileID: 1936398650346047746}
-  - {fileID: 3310783937743303783}
-  - {fileID: -8383281675686717456}
-  - {fileID: 7274873684961962148}
-  - {fileID: 4935408994999884243}
-  - {fileID: 2178950607817516685}
-  - {fileID: 5107681946684634868}
+  - {fileID: 925041830331504670}
+  - {fileID: -3220072199582093143}
+  - {fileID: 1318507390977572484}
+  - {fileID: 9212934483570167177}
+  - {fileID: 2163900434419263202}
+  - {fileID: 5282395884214732006}
+  - {fileID: -5075609786345881647}
+  - {fileID: -5953242824539187472}
+  - {fileID: 2081140740774216591}
+  - {fileID: 25795345170531844}
+  - {fileID: -8281211319431826146}
+  - {fileID: -4393857464284877923}
+  - {fileID: -5434384428485995108}
+  - {fileID: -5182654917149956856}
+  - {fileID: -2800780653147831553}
+  - {fileID: -2646674139014556388}
+  - {fileID: -2730572756898529239}
+  - {fileID: 4651561602015321942}
+  - {fileID: -6210230075763205276}
+  - {fileID: -799344134126804721}
+  - {fileID: 4557157934667644747}
+  - {fileID: -5000867929435267353}
+  - {fileID: -3850033920419028666}
+  - {fileID: 6292508866827767244}
+  - {fileID: 3000959355528322452}
+  - {fileID: 2181016142219838612}
+  - {fileID: 2086154038454249668}
+  - {fileID: -7009756730000821628}
+  - {fileID: 4999580501503911920}
+  - {fileID: -5029859888268493422}
+  - {fileID: -3894824393935167106}
+  - {fileID: -3183771923931822108}
+  - {fileID: -1256143939805932256}
+  - {fileID: 5856551648804029655}
+  - {fileID: 5311017777997770547}
+  - {fileID: 2631062162197012980}
+  - {fileID: 8622304215749718012}
+  - {fileID: 4374598117150732493}
+  - {fileID: 7169559754635462089}
+  - {fileID: 6420669409790279322}
+  - {fileID: -1932631196347515402}
+  - {fileID: 3696615586184115306}
+  - {fileID: -3451939591783433500}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:
@@ -439,10 +448,10 @@ MonoBehaviour:
   m_Name: RuntimeDebuggerOpenXRFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Runtime Debugger
-  version: 1
-  featureIdInternal: com.unity.openxr.features.runtimedebugger
-  openxrExtensionStrings: 
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
   company: Unity
   priority: 0
   required: 0
@@ -500,12 +509,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3afcc00e190534d8c0c8ebd2246d84, type: 3}
   m_Name: ViveSecondaryViewConfiguration Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: VIVE XR Spectator Camera (Beta)
-  version: 1.0.0
-  featureIdInternal: vive.openxr.feature.secondaryviewconfiguration
-  openxrExtensionStrings: XR_MSFT_secondary_view_configuration
-  company: HTC
+  m_enabled: 1
+  nameUi: Oculus Touch Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.oculustouch
+  openxrExtensionStrings: 
+  company: Unity
   priority: 0
   required: 0
   <IsAllowSpectatorCameraCapture360Image>k__BackingField: 0
@@ -582,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f647cc0545697264a9878224faada6d5, type: 3}
   m_Name: MetaQuestFeature Android
   m_EditorClassIdentifier: 
+  m_enabled: 1
   m_enabled: 1
   nameUi: Meta Quest Support
   version: 1.0.0
@@ -868,7 +878,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &-1057506010243680643
+--- !u!114 &-3451939591783433500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1302,15 +1312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb1f33f93dd034d90b1d1a27a5eb27, type: 3}
   m_Name: VivePassthrough Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: VIVE XR Passthrough
-  version: 1.0.0
-  featureIdInternal: vive.openxr.feature.passthrough
-  openxrExtensionStrings: XR_HTC_passthrough XR_HTC_passthrough_configuration
-  company: HTC
-  priority: 0
-  required: 0
---- !u!114 &3954568274812945799
+  Keys: 010000000e00000007000000
+  Values:
+  - {fileID: 7586411616509404957}
+  - {fileID: -2007798633868541178}
+  - {fileID: -6909283670626604552}
+--- !u!114 &25795345170531844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1571,11 +1578,11 @@ MonoBehaviour:
   m_Name: ViveHandInteraction Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: VIVE XR Hand Interaction
-  version: 1.0.0
-  featureIdInternal: vive.openxr.feature.hand.interaction
-  openxrExtensionStrings: XR_HTC_hand_interaction
-  company: HTC
+  nameUi: Meta Quest Touch Pro Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestpro
+  openxrExtensionStrings: XR_FB_touch_controller_pro
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &6610748924980868525
