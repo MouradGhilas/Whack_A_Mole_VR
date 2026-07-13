@@ -52,10 +52,6 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     private ProfileManager profileManager;
 
-#if !UNITY_ANDROID
-    [SerializeField]
-    private PupilLabs.RecordingController gazeRecorder;
-#endif
     //temporarily serialized field for game test
     [SerializeField]
     private float gameDuration;
@@ -126,7 +122,6 @@ public class GameDirector : MonoBehaviour
     };
 
     private void Awake()
-    private void Awake()
     {
         patternManager = FindObjectOfType<PatternManager>();
         modifiersManager = FindObjectOfType<ModifiersManager>();
@@ -137,9 +132,6 @@ public class GameDirector : MonoBehaviour
 Invoke(nameof(StartGame), 2f);
 #endif
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-Invoke(nameof(StartGame), 2f);
-#endif
     }
 
     public static void initGamePeriod()

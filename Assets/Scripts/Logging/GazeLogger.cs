@@ -1,12 +1,9 @@
-#if !UNITY_ANDROID
-using PupilLabs;
 #if false
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GazeLogger : DataProvider
 {
-
     public Transform gazeOrigin;
     public GazeController gazeController;
 
@@ -37,22 +34,11 @@ public class GazeLogger : DataProvider
     [SerializeField]
     private PupilLabs.TimeSync timeSync;
 
-    void Awake()
-    {
-        ResetGazeData();
-    }
+    void Awake() { ResetGazeData(); }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gazeController.OnReceive3dGaze += ReceiveGaze;
-    }
+    void Start() { gazeController.OnReceive3dGaze += ReceiveGaze; }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     void ReceiveGaze(GazeData gazeData)
     {
@@ -62,7 +48,6 @@ public class GazeLogger : DataProvider
             return;
         }
         isGazing = true;
-
         localGazeDirection = gazeData.GazeDirection;
         gazeDistance = gazeData.GazeDistance;
         gazeConfidence = gazeData.Confidence;
@@ -79,16 +64,11 @@ public class GazeLogger : DataProvider
         {
             worldGazeOrigin = gazeOrigin.position;
             worldGazeDirection = gazeOrigin.TransformDirection(localGazeDirection);
-
             if (Physics.SphereCast(worldGazeOrigin, sphereCastRadius, worldGazeDirection, out RaycastHit hit, Mathf.Infinity))
             {
-                //Debug.DrawRay(worldGazeOrigin, worldGazeDirection * hit.distance, Color.yellow);
                 gazeHitPosition = hit.point;
                 objectHit = hit.transform.gameObject;
             }
-            // We cannot ask timeSync for a timestamp directly, because it leads to too many requests. Instead
-            // we should just rely on the pupil time stamp we get from the ReceiveGaze() connection.
-            //gazeData["PupilTime"] = timeSync != null ? timeSync.GetPupilTimestamp().ToString().Replace(",", ".") : "NULL";
             gazeData["UnityToPupilTimeOffset"] = timeSync != null ? timeSync.UnityToPupilTimeOffset.ToString().Replace(",", ".") : "NULL";
             gazeData["PupilTimeSample"] = pupilTime;
             gazeData["GazeConfidence"] = gazeConfidence;
@@ -141,44 +121,20 @@ public class GazeLogger : DataProvider
     {
         gazeData = new Dictionary<string, object>()
         {
-            {"PupilTime", "NULL"},
-            {"UnityToPupilTimeOffset", "NULL"},
+            {"PupilTime", "NULL"}, {"UnityToPupilTimeOffset", "NULL"},
             {"GazeConfidence", "NULL"},
-            {"EyeCenter0X", "NULL"},
-            {"EyeCenter0Y", "NULL"},
-            {"EyeCenter0Z", "NULL"},
-            {"EyeCenter1X", "NULL"},
-            {"EyeCenter1Y", "NULL"},
-            {"EyeCenter1Z", "NULL"},
-            {"GazeNormal0X", "NULL"},
-            {"GazeNormal0Y", "NULL"},
-            {"GazeNormal0Z", "NULL"},
-            {"GazeNormal1X", "NULL"},
-            {"GazeNormal1Y", "NULL"},
-            {"GazeNormal1Z", "NULL"},
-            {"LocalGazeDirectionX", "NULL"},
-            {"LocalGazeDirectionY", "NULL"},
-            {"LocalGazeDirectionZ", "NULL"},
+            {"EyeCenter0X", "NULL"}, {"EyeCenter0Y", "NULL"}, {"EyeCenter0Z", "NULL"},
+            {"EyeCenter1X", "NULL"}, {"EyeCenter1Y", "NULL"}, {"EyeCenter1Z", "NULL"},
+            {"GazeNormal0X", "NULL"}, {"GazeNormal0Y", "NULL"}, {"GazeNormal0Z", "NULL"},
+            {"GazeNormal1X", "NULL"}, {"GazeNormal1Y", "NULL"}, {"GazeNormal1Z", "NULL"},
+            {"LocalGazeDirectionX", "NULL"}, {"LocalGazeDirectionY", "NULL"}, {"LocalGazeDirectionZ", "NULL"},
             {"GazeDistance", "NULL"},
-            {"WorldGazeOriginX", "NULL"},
-            {"WorldGazeOriginY", "NULL"},
-            {"WorldGazeOriginZ", "NULL"},
-            {"WorldGazeDirectionX", "NULL"},
-            {"WorldGazeDirectionY", "NULL"},
-            {"WorldGazeDirectionZ", "NULL"},
-            {"WorldGazeHitPositionX", "NULL"},
-            {"WorldGazeHitPositionY", "NULL"},
-            {"WorldGazeHitPositionZ", "NULL"},
-            {"WorldGazeHitObjectName", "NULL"},
-            {"WorldGazeHitObjectIsMole", "NULL"},
-            {"WorldGazeHitObjectMoleID", "NULL"},
-            {"WorldGazeHitObjectIsWall", "NULL"}
+            {"WorldGazeOriginX", "NULL"}, {"WorldGazeOriginY", "NULL"}, {"WorldGazeOriginZ", "NULL"},
+            {"WorldGazeDirectionX", "NULL"}, {"WorldGazeDirectionY", "NULL"}, {"WorldGazeDirectionZ", "NULL"},
+            {"WorldGazeHitPositionX", "NULL"}, {"WorldGazeHitPositionY", "NULL"}, {"WorldGazeHitPositionZ", "NULL"},
+            {"WorldGazeHitObjectName", "NULL"}, {"WorldGazeHitObjectIsMole", "NULL"},
+            {"WorldGazeHitObjectMoleID", "NULL"}, {"WorldGazeHitObjectIsWall", "NULL"}
         };
     }
-
 }
-<<<<<<< Updated upstream
 #endif
-=======
-#endif
->>>>>>> Stashed changes

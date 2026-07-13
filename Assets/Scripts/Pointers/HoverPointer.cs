@@ -48,11 +48,7 @@ public class HoverPointer : Pointer
             laser.SetPosition(1, rayPosition);
             cursor.SetPosition(rayPosition);
         }
-<<<<<<< Updated upstream
 #if !UNITY_ANDROID
-=======
-        #if !UNITY_ANDROID
->>>>>>> Stashed changes
         if (SteamVR.active)
 #endif
         {
@@ -91,7 +87,6 @@ public class HoverPointer : Pointer
                 }
             }
         }
-#endif
     }
 
     // Implementation of the behavior of the Pointer on shoot. 
