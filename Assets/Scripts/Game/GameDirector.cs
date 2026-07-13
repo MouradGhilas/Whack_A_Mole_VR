@@ -51,8 +51,12 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField]
     private ProfileManager profileManager;
+<<<<<<< Updated upstream
 
 #if !UNITY_ANDROID
+=======
+#if false
+>>>>>>> Stashed changes
     [SerializeField]
     private PupilLabs.RecordingController gazeRecorder;
 #endif
@@ -126,13 +130,17 @@ public class GameDirector : MonoBehaviour
         }}
     };
 
-    void Awake()
+    private void Awake()
     {
         patternManager = FindObjectOfType<PatternManager>();
         modifiersManager = FindObjectOfType<ModifiersManager>();
         gameDefaultDuration = gameDuration;
         constraint = FindObjectOfType<Constraint>();
         initGamePeriod();
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+Invoke(nameof(StartGame), 2f);
+#endif
     }
 
     public static void initGamePeriod()
@@ -233,7 +241,11 @@ public class GameDirector : MonoBehaviour
 
         UpdateState(GameState.Playing);
         Mole.ResetMoleOccurrenceIDCounter();
+<<<<<<< Updated upstream
 #if !UNITY_ANDROID
+=======
+#if false
+>>>>>>> Stashed changes
         if (gazeRecorder != null) gazeRecorder.StartRecording();
 #endif
         currentPlayPeriod = "Game";
@@ -401,7 +413,11 @@ public class GameDirector : MonoBehaviour
     {
         if (gameState == GameState.Stopped) return;
         UpdateState(GameState.Stopped);
+<<<<<<< Updated upstream
 #if !UNITY_ANDROID
+=======
+#if false
+>>>>>>> Stashed changes
         if (gazeRecorder != null) gazeRecorder.StopRecording();
 #endif
         patternManager.StopPattern();
@@ -557,8 +573,13 @@ public class GameDirector : MonoBehaviour
 
     void OnApplicationQuit()
     {
+<<<<<<< Updated upstream
 #if !UNITY_ANDROID
         if (gazeRecorder != null) gazeRecorder.StopRecording();
+=======
+#if false
+        gazeRecorder.StopRecording();
+>>>>>>> Stashed changes
 #endif
     }
 

@@ -20,6 +20,15 @@ public class HmdCalibration : MonoBehaviour
 
     [SerializeField]
     private float ratioSpeed = 3f;
+    [SerializeField]
+    private float desiredHeadHeight = 1.6f;
+    [SerializeField]
+    private Transform originObject;
+    [SerializeField]
+    private Transform mainCamera;
+
+    [SerializeField]
+    private TherapistUi therapistUi;
 
     bool calibrated = false;
 
@@ -46,8 +55,22 @@ public class HmdCalibration : MonoBehaviour
     private void CloseInstructionPanel()
     {
         StartCoroutine(FadeOutCanvasGroup());
+
         calibrationUpdate.Invoke();
         calibrated = true;
+
+        SetCameraHeight();
+
+        StartCoroutine(StartGameDelayed());
+    }
+
+    private IEnumerator StartGameDelayed()
+    {
+        yield return new WaitForSeconds(1f);
+
+        therapistUi.StartGame();
+
+        GameObject.Find("GazeRecorder")?.SetActive(true);
     }
 
     public IEnumerator FadeOutCanvasGroup()
@@ -59,5 +82,24 @@ public class HmdCalibration : MonoBehaviour
             yield return null;
         }
         canvasGroupToFade.transform.gameObject.SetActive(false);
+    }
+
+    public void SetCameraHeight()
+    {
+
+        Vector3 cameraPos = mainCamera.position;
+
+        // Desired world position for the head
+        Vector3 targetHeadPos = new Vector3(0f, 1.55f, -0.33f);
+
+        // How much the rig needs to move
+        Vector3 offset = targetHeadPos - cameraPos;
+
+        // Move the rig/player root
+        originObject.transform.position += offset;
+
+        calibrated = true;
+
+        Debug.Log($"Head recentered from {cameraPos} to {targetHeadPos}");
     }
 }

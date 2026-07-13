@@ -1,4 +1,3 @@
-
 #if !UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic; // Added for List<HandGestureState>

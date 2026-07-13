@@ -1,5 +1,6 @@
-﻿#if !UNITY_ANDROID
+#if !UNITY_ANDROID
 using PupilLabs;
+#if false
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -176,4 +177,8 @@ public class GazeLogger : DataProvider
     }
 
 }
+<<<<<<< Updated upstream
 #endif
+=======
+#endif
+>>>>>>> Stashed changes

@@ -73,6 +73,7 @@ public class LogTracker : MonoBehaviour
         {
 #if !UNITY_ANDROID
             trigger = false;
+#if !UNITY_ANDROID
             if (SteamVR.active)
             {
                 if (SteamVR_Actions._default.GrabPinch.GetStateDown(controller))
