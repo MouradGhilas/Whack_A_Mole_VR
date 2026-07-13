@@ -142,8 +142,15 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   bundleVersion: 2020.11.05
   preloadedAssets:
+<<<<<<< Updated upstream
   - {fileID: 4790739713189434636, guid: a68f6848dd91f8e4295169d24ea9aeb7, type: 2}
   - {fileID: -6909283670626604552, guid: 5ea2b5329bf711d4aac36f67f56610a5, type: 2}
+=======
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8437068936237531596, guid: 5848acca255b1854fb20a9d4e694ed93, type: 2}
+  - {fileID: -8804333868368594452, guid: 5ea2b5329bf711d4aac36f67f56610a5, type: 2}
+>>>>>>> Stashed changes
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -155,7 +162,6 @@ PlayerSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
-  enableOpenGLProfilerGPURecorders: 0
   enableOpenGLProfilerGPURecorders: 0
   useHDRDisplay: 0
   D3DHDRBitDepth: 0
@@ -174,7 +180,11 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
+<<<<<<< Updated upstream
   AndroidMinSdkVersion: 24
+=======
+  AndroidMinSdkVersion: 29
+>>>>>>> Stashed changes
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -266,7 +276,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/1Unity Projects/Ghilas-work/WhackAMoleVRquestversion/user.keystore
+  AndroidKeystoreName: '{inproject}: user.keystore'
   AndroidKeyaliasName: aalborg
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -276,7 +286,6 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 1
   androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
@@ -1032,6 +1041,7 @@ PlayerSettings:
   cloudServicesEnabled:
     Collab: 0
     Purchasing: 0
+    UNet: 1
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -1051,10 +1061,17 @@ PlayerSettings:
   activeInputHandler: 2
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
+<<<<<<< Updated upstream
   cloudProjectId: 3af4463f-2496-4fc9-b3d4-250f766fb192
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: gfggfgg
+=======
+  cloudProjectId: b62f9e17-c878-405e-9343-1f19ce994b3a
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: Whack_A_Mole_VR (2)
+>>>>>>> Stashed changes
   organizationId: ghilesmessaoudicryptomqex43rx
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

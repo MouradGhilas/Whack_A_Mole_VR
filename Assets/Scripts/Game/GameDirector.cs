@@ -126,11 +126,16 @@ public class GameDirector : MonoBehaviour
     };
 
     private void Awake()
+    private void Awake()
     {
         patternManager = FindObjectOfType<PatternManager>();
         modifiersManager = FindObjectOfType<ModifiersManager>();
         gameDefaultDuration = gameDuration;
         initGamePeriod();
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+Invoke(nameof(StartGame), 2f);
+#endif
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 Invoke(nameof(StartGame), 2f);
@@ -233,11 +238,8 @@ Invoke(nameof(StartGame), 2f);
 
         UpdateState(GameState.Playing);
         Mole.ResetMoleOccurrenceIDCounter();
-#if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StartRecording();
-}
+#if !UNITY_ANDROID
+        if (gazeRecorder != null) gazeRecorder.StartRecording();
 #endif
         currentPlayPeriod = "Game";
         loggerNotifier.NotifyLogger("Game Started", EventLogger.EventType.GameEvent, new Dictionary<string, object>()
@@ -404,11 +406,8 @@ if (gazeRecorder != null)
     {
         if (gameState == GameState.Stopped) return;
         UpdateState(GameState.Stopped);
-#if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StopRecording();
-}
+#if !UNITY_ANDROID
+        if (gazeRecorder != null) gazeRecorder.StopRecording();
 #endif
         patternManager.StopPattern();
         StopAllCoroutines();
@@ -563,11 +562,8 @@ if (gazeRecorder != null)
 
     void OnApplicationQuit()
     {
-#if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StopRecording();
-}
+#if !UNITY_ANDROID
+        if (gazeRecorder != null) gazeRecorder.StopRecording();
 #endif
     }
 
