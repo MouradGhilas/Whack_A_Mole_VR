@@ -51,14 +51,6 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField]
     private ProfileManager profileManager;
-
-<<<<<<< HEAD
-=======
-#if !UNITY_ANDROID
-    [SerializeField]
-    private PupilLabs.RecordingController gazeRecorder;
-#endif
->>>>>>> 7cd13a7 (Quest 3 VR version)
     //temporarily serialized field for game test
     [SerializeField]
     private float gameDuration;
@@ -102,7 +94,6 @@ public class GameDirector : MonoBehaviour
     private LoggerNotifier loggerNotifier;
     private PatternManager patternManager;
     private ModifiersManager modifiersManager;
-    private Constraint constraint;
     private SpeedUpdateEvent speedUpdateEvent = new SpeedUpdateEvent();
     private int participantId = 0;
     private int testId = 0;
@@ -134,7 +125,6 @@ public class GameDirector : MonoBehaviour
         patternManager = FindObjectOfType<PatternManager>();
         modifiersManager = FindObjectOfType<ModifiersManager>();
         gameDefaultDuration = gameDuration;
-        constraint = FindObjectOfType<Constraint>();
         initGamePeriod();
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -211,8 +201,6 @@ Invoke(nameof(StartGame), 2f);
     // Starts the game.
     public void StartGame()
     {
-        //constraint.SetReset();
-
         if (gameState == GameState.Playing) return;
         LoadDifficulty();
         modifiersManager.LogState();
@@ -240,16 +228,8 @@ Invoke(nameof(StartGame), 2f);
 
         UpdateState(GameState.Playing);
         Mole.ResetMoleOccurrenceIDCounter();
-<<<<<<< HEAD
 #if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StartRecording();
-}
-=======
-#if !UNITY_ANDROID
         if (gazeRecorder != null) gazeRecorder.StartRecording();
->>>>>>> 7cd13a7 (Quest 3 VR version)
 #endif
         currentPlayPeriod = "Game";
         loggerNotifier.NotifyLogger("Game Started", EventLogger.EventType.GameEvent, new Dictionary<string, object>()
@@ -416,16 +396,8 @@ if (gazeRecorder != null)
     {
         if (gameState == GameState.Stopped) return;
         UpdateState(GameState.Stopped);
-<<<<<<< HEAD
 #if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StopRecording();
-}
-=======
-#if !UNITY_ANDROID
         if (gazeRecorder != null) gazeRecorder.StopRecording();
->>>>>>> 7cd13a7 (Quest 3 VR version)
 #endif
         patternManager.StopPattern();
         StopAllCoroutines();
@@ -580,16 +552,8 @@ if (gazeRecorder != null)
 
     void OnApplicationQuit()
     {
-<<<<<<< HEAD
 #if false
-if (gazeRecorder != null)
-{
-    gazeRecorder.StopRecording();
-}
-=======
-#if !UNITY_ANDROID
-        if (gazeRecorder != null) gazeRecorder.StopRecording();
->>>>>>> 7cd13a7 (Quest 3 VR version)
+        gazeRecorder.StopRecording();
 #endif
     }
 
