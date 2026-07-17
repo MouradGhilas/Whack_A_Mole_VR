@@ -51,6 +51,7 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField]
     private ProfileManager profileManager;
+
     //temporarily serialized field for game test
     [SerializeField]
     private float gameDuration;
@@ -229,7 +230,10 @@ Invoke(nameof(StartGame), 2f);
         UpdateState(GameState.Playing);
         Mole.ResetMoleOccurrenceIDCounter();
 #if false
-        if (gazeRecorder != null) gazeRecorder.StartRecording();
+if (gazeRecorder != null)
+{
+    gazeRecorder.StartRecording();
+}
 #endif
         currentPlayPeriod = "Game";
         loggerNotifier.NotifyLogger("Game Started", EventLogger.EventType.GameEvent, new Dictionary<string, object>()
@@ -397,7 +401,10 @@ Invoke(nameof(StartGame), 2f);
         if (gameState == GameState.Stopped) return;
         UpdateState(GameState.Stopped);
 #if false
-        if (gazeRecorder != null) gazeRecorder.StopRecording();
+if (gazeRecorder != null)
+{
+    gazeRecorder.StopRecording();
+}
 #endif
         patternManager.StopPattern();
         StopAllCoroutines();
@@ -553,7 +560,10 @@ Invoke(nameof(StartGame), 2f);
     void OnApplicationQuit()
     {
 #if false
-        gazeRecorder.StopRecording();
+if (gazeRecorder != null)
+{
+    gazeRecorder.StopRecording();
+}
 #endif
     }
 
