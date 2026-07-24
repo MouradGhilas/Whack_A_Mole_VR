@@ -1,7 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if !UNITY_ANDROID
 using Valve.VR;
+#endif
 
 /*
 Basic implementation of the pointer abstract class. Simply changes the color of the laser and 
@@ -48,7 +50,9 @@ public class HoverPointer : Pointer
             cursor.SetPosition(rayPosition);
             //UpdateLaser(false, rayDirection: laserOrigin.transform.InverseTransformDirection(rayDirection) * maxLaserLength);
         }
+#if !UNITY_ANDROID
         if (SteamVR.active)
+#endif
         {
             if (hit.collider)
             {
@@ -58,7 +62,6 @@ public class HoverPointer : Pointer
                     Mole.States moleAnswer = mole.GetState();
                     if (moleAnswer == Mole.States.Enabled)
                     {
-
                         if ((Time.time - dwellStartTimer) > dwellTime)
                         {
                             pointerShootOrder++;
