@@ -1,3 +1,4 @@
+#if !UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic; // Added for List<HandGestureState>
 using System.Linq;
@@ -44,7 +45,7 @@ public enum HandGestureState
 public class EMGClassifiedGestureManager : MonoBehaviour
 {
 
-    
+
 
 
     private SteamVR_Skeleton_Poser poser; // Reference to the SteamVR_Skeleton_Poser component, drives pose blending at runtime
@@ -209,3 +210,4 @@ public class EMGClassifiedGestureManager : MonoBehaviour
         Debug.Log("Forced blend to custom poser.");
     }
 }
+#endif

@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+#if !UNITY_ANDROID
 using Valve.VR;
+#endif
 
 /*
 PointerTypeSelector manages which Pointer scripts should be enabled/disabled on the gameObject.

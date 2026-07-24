@@ -8,12 +8,16 @@ public class VRBodyEmbodimentManager : MonoBehaviour
     [SerializeField]
     private GameObject sittingBench;
 
+#if false
     private IKTargetFollowVRRig ikTargetFollowVRRig;
+#endif
     private ModifiersManager modifiersManager;
 
     void Awake()
     {
+#if false
         ikTargetFollowVRRig = GetComponent<IKTargetFollowVRRig>();
+#endif
         modifiersManager = FindObjectOfType<ModifiersManager>();
     }
 
@@ -65,6 +69,7 @@ public class VRBodyEmbodimentManager : MonoBehaviour
 
     public void SetMirrorRightEmbodiment(bool mirrored)
     {
+#if false
         if (mirrored)
         {
             ikTargetFollowVRRig.rightHand.vrTarget = modifiersManager.rightController.transform;
@@ -74,10 +79,12 @@ public class VRBodyEmbodimentManager : MonoBehaviour
         {
             ikTargetFollowVRRig.leftHand.vrTarget = modifiersManager.leftController.transform;
         }
+#endif
     }
 
     public void SetMirrorLeftEmbodiment(bool mirrored)
     {
+#if false
         if (mirrored)
         {
             ikTargetFollowVRRig.leftHand.vrTarget = modifiersManager.leftController.transform;
@@ -87,5 +94,6 @@ public class VRBodyEmbodimentManager : MonoBehaviour
         {
             ikTargetFollowVRRig.rightHand.vrTarget = modifiersManager.rightController.transform;
         }
+#endif
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !UNITY_ANDROID
+using System.Collections.Generic;
 using System.Linq;
 using Thalmic.Myo;
 using UnityEngine;
@@ -112,3 +113,4 @@ public class MyoEMGLogging : MonoBehaviour
         isLoggingStarted = false;
     }
 }
+#endif
