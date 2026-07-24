@@ -199,49 +199,49 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -5075609786345881647}
+  - {fileID: 925041830331504670}
   - {fileID: -3220072199582093143}
+  - {fileID: 1318507390977572484}
   - {fileID: 9212934483570167177}
   - {fileID: 2163900434419263202}
+  - {fileID: 5282395884214732006}
+  - {fileID: -5075609786345881647}
   - {fileID: -5953242824539187472}
   - {fileID: 2081140740774216591}
+  - {fileID: 25795345170531844}
+  - {fileID: -8281211319431826146}
+  - {fileID: -4393857464284877923}
+  - {fileID: -5434384428485995108}
   - {fileID: -5182654917149956856}
-  - {fileID: -3451939591783433500}
-  - {fileID: 4999580501503911920}
-  - {fileID: 5311017777997770547}
-  - {fileID: 4374598117150732493}
+  - {fileID: -2800780653147831553}
   - {fileID: -2646674139014556388}
-  - {fileID: 6420669409790279322}
-  - {fileID: -1932631196347515402}
-  - {fileID: 7169559754635462089}
-  - {fileID: 8622304215749718012}
-  - {fileID: 2631062162197012980}
-  - {fileID: 5856551648804029655}
   - {fileID: -2730572756898529239}
-  - {fileID: -3894824393935167106}
-  - {fileID: -3183771923931822108}
-  - {fileID: -1256143939805932256}
-  - {fileID: -5029859888268493422}
-  - {fileID: 3696615586184115306}
-  - {fileID: -7009756730000821628}
-  - {fileID: 2086154038454249668}
-  - {fileID: 3000959355528322452}
+  - {fileID: 4651561602015321942}
   - {fileID: -6210230075763205276}
   - {fileID: -799344134126804721}
   - {fileID: 4557157934667644747}
   - {fileID: -5000867929435267353}
   - {fileID: -3850033920419028666}
   - {fileID: 6292508866827767244}
+  - {fileID: 3000959355528322452}
   - {fileID: 2181016142219838612}
-  - {fileID: 4651561602015321942}
-  - {fileID: 925041830331504670}
-  - {fileID: 1318507390977572484}
-  - {fileID: 5282395884214732006}
-  - {fileID: 25795345170531844}
-  - {fileID: -8281211319431826146}
-  - {fileID: -4393857464284877923}
-  - {fileID: -5434384428485995108}
-  - {fileID: -2800780653147831553}
+  - {fileID: 2086154038454249668}
+  - {fileID: -7009756730000821628}
+  - {fileID: 4999580501503911920}
+  - {fileID: -5029859888268493422}
+  - {fileID: -3894824393935167106}
+  - {fileID: -3183771923931822108}
+  - {fileID: -1256143939805932256}
+  - {fileID: 5856551648804029655}
+  - {fileID: 5311017777997770547}
+  - {fileID: 2631062162197012980}
+  - {fileID: 8622304215749718012}
+  - {fileID: 4374598117150732493}
+  - {fileID: 7169559754635462089}
+  - {fileID: 6420669409790279322}
+  - {fileID: -1932631196347515402}
+  - {fileID: 3696615586184115306}
+  - {fileID: -3451939591783433500}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9ba5ccf170d54478c5df33f98aabc5, type: 3}
   m_Name: VIVEFocus3Profile Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: VIVE Focus 3 Controller Interaction
   version: 1.0.0
   featureIdInternal: vive.openxr.feature.focus3controller
@@ -977,11 +977,11 @@ MonoBehaviour:
   m_Name: XrPerformanceSettingsFeature iPhone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: 
-  version: 
-  featureIdInternal: 
-  openxrExtensionStrings: 
-  company: 
+  nameUi: XR Performance Settings
+  version: 1.0.0
+  featureIdInternal: com.unity.openxr.feature.extension.performance_settings
+  openxrExtensionStrings: XR_EXT_performance_settings
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &-2337175339413645396
@@ -996,7 +996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
   m_Name: iPhone
   m_EditorClassIdentifier: 
-  features: []
+  features:
+  - {fileID: -2485346537091817965}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
   m_colorSubmissionModes:
@@ -1458,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b2125d5dc73694eaed34e97a0962e0, type: 3}
   m_Name: ViveEnterpriseCommand Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: VIVE XR Enterprise Command
   version: 0.1
   featureIdInternal: vive.openxr.feature.enterprise.command
@@ -1638,7 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03242486774e40c4683edc65026f5c89, type: 3}
   m_Name: VIVEFocus3Feature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: VIVE XR Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.vivefocus3

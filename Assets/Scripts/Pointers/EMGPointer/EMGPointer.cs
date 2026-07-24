@@ -176,7 +176,7 @@ public class EMGPointer : Pointer
     }
 
     private bool IsAboveThreshold(float emgIntensity) => (emgIntensity >= (emgThreshold * maxEMG));
-    
+
     public string getThresholdState()
     {
         if (!active)

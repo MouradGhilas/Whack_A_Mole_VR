@@ -45,7 +45,7 @@ public enum HandGestureState
 public class EMGClassifiedGestureManager : MonoBehaviour
 {
 
-    
+
 
 
     private SteamVR_Skeleton_Poser poser; // Reference to the SteamVR_Skeleton_Poser component, drives pose blending at runtime
