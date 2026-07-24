@@ -1,10 +1,9 @@
-﻿using PupilLabs;
+﻿#if false
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GazeLogger : DataProvider
 {
-
     public Transform gazeOrigin;
     public GazeController gazeController;
 
@@ -175,3 +174,4 @@ public class GazeLogger : DataProvider
     }
 
 }
+#endif

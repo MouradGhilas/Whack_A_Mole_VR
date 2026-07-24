@@ -1,3 +1,4 @@
+#if !UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic; // Added for List<HandGestureState>
 using System.Linq;
@@ -209,3 +210,4 @@ public class EMGClassifiedGestureManager : MonoBehaviour
         Debug.Log("Forced blend to custom poser.");
     }
 }
+#endif

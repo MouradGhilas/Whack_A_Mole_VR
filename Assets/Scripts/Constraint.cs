@@ -32,7 +32,9 @@ public class Constraint : MonoBehaviour
                 // Now rotate CameraRig in opposite direction to compensate
                 //cameraRig.Rotate(0f, -offsetAngle, 0f);
 
+#if !UNITY_ANDROID
                 Valve.VR.OpenVR.Chaperone.ResetZeroPose(Valve.VR.ETrackingUniverseOrigin.TrackingUniverseSeated);
+#endif
 
                 float offsetX = steamCamera.transform.position.x;
                 float offsetZ = steamCamera.transform.position.z;

@@ -52,9 +52,6 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     private ProfileManager profileManager;
 
-    [SerializeField]
-    private PupilLabs.RecordingController gazeRecorder;
-
     //temporarily serialized field for game test
     [SerializeField]
     private float gameDuration;
@@ -98,7 +95,6 @@ public class GameDirector : MonoBehaviour
     private LoggerNotifier loggerNotifier;
     private PatternManager patternManager;
     private ModifiersManager modifiersManager;
-    private Constraint constraint;
     private SpeedUpdateEvent speedUpdateEvent = new SpeedUpdateEvent();
     private int participantId = 0;
     private int testId = 0;
@@ -125,13 +121,17 @@ public class GameDirector : MonoBehaviour
         }}
     };
 
-    void Awake()
+    private void Awake()
     {
         patternManager = FindObjectOfType<PatternManager>();
         modifiersManager = FindObjectOfType<ModifiersManager>();
         gameDefaultDuration = gameDuration;
-        constraint = FindObjectOfType<Constraint>();
         initGamePeriod();
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+Invoke(nameof(StartGame), 2f);
+#endif
+
     }
 
     public static void initGamePeriod()
@@ -203,8 +203,6 @@ public class GameDirector : MonoBehaviour
     // Starts the game.
     public void StartGame()
     {
-        //constraint.SetReset();
-
         if (gameState == GameState.Playing) return;
         LoadDifficulty();
         modifiersManager.LogState();
@@ -232,7 +230,7 @@ public class GameDirector : MonoBehaviour
 
         UpdateState(GameState.Playing);
         Mole.ResetMoleOccurrenceIDCounter();
-        if (gazeRecorder != null) gazeRecorder.StartRecording();
+
         currentPlayPeriod = "Game";
         loggerNotifier.NotifyLogger("Game Started", EventLogger.EventType.GameEvent, new Dictionary<string, object>()
         {
@@ -398,7 +396,7 @@ public class GameDirector : MonoBehaviour
     {
         if (gameState == GameState.Stopped) return;
         UpdateState(GameState.Stopped);
-        if (gazeRecorder != null) gazeRecorder.StopRecording();
+
         patternManager.StopPattern();
         StopAllCoroutines();
         wallManager.Disable();
@@ -552,7 +550,7 @@ public class GameDirector : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        gazeRecorder.StopRecording();
+
     }
 
 }
