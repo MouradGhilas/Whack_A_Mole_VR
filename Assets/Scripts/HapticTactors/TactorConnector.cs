@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(TactorConnector))]
 public class TactorConnectorEditor : Editor
 {
@@ -46,6 +49,7 @@ public class TactorConnectorEditor : Editor
             if (isScanning) EditorGUILayout.LabelField("Scanning ports... " + scanStatus);
         }
     }
+   
 
     private void AutoConnectPort(TactorConnector connector)
     {
@@ -91,7 +95,7 @@ public class TactorConnectorEditor : Editor
         });
     }
 }
-
+#endif
 
 
 [Serializable]
