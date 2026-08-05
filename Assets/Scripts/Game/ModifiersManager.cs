@@ -46,8 +46,9 @@ public class ModifiersManager : MonoBehaviour
         public bool? motorRestriction;
         public float? motorRestrictionUpper;
         public float? motorRestrictionLower;
-        public PerformanceFeedback? performanceFeedback;
         public Embodiment? embodiment;
+        public PerformanceFeedback? performanceFeedback;
+        public JudgementType? judgementType;
     }
 
     private Modifiers currentModifiers = new();
@@ -68,8 +69,9 @@ public class ModifiersManager : MonoBehaviour
             motorRestriction = false,
             motorRestrictionUpper = 1f,
             motorRestrictionLower = 0.5f,
+            embodiment = Embodiment.RightHand,
             performanceFeedback = PerformanceFeedback.None,
-            embodiment = Embodiment.RightHand
+            judgementType = JudgementType.MaxSpeed
         };
 
     [SerializeField]
@@ -159,8 +161,6 @@ public class ModifiersManager : MonoBehaviour
     private EyePatch eyePatch = EyePatch.None;
     private HideWall hideWall = HideWall.None;
     private ControllerSetup controllerSetup = ControllerSetup.Right;
-    private ModifiersManager.PerformanceFeedback performanceFeedback = PerformanceFeedback.All;
-    private JudgementType judgementType = JudgementType.MaxSpeed;
     private bool mirrorEffect;
     private bool physicalMirrorEffect;
     private bool geometricMirrorEffect;
@@ -197,7 +197,6 @@ public class ModifiersManager : MonoBehaviour
             {"HideWall", "No Hide Wall Defined"},
             {"HideWallAmount", "No Hide Wall Amount Defined"},
             {"GeometricMirror", "No GeometricMirror Defined"},
-            {"PerformanceFeedback", "No PerformanceFeedback Defined"},
             {"Embodiment", "Undefined"},
         });
         // Initialization of the starting values of the parameters.
@@ -211,7 +210,6 @@ public class ModifiersManager : MonoBehaviour
             {"HideWall", System.Enum.GetName(typeof(HideWall), defaultModifiers.hideWall)},
             {"HideWallAmount", defaultModifiers.hideWallAmount},
             {"GeometricMirror", defaultModifiers.geometricMirrorEffect},
-            {"PerformanceFeedback", defaultModifiers.performanceFeedback},
             {"Embodiment", System.Enum.GetName(typeof(Embodiment), defaultModifiers.embodiment)},
         });
     }
@@ -219,6 +217,8 @@ public class ModifiersManager : MonoBehaviour
     void Start()
     {
         SetDefaultModifiers();
+        SetPerformanceFeedback(defaultModifiers.performanceFeedback.Value);
+        SetJudgementType(defaultModifiers.judgementType.Value);
     }
 
     private Pointer getActivePointer(GameObject controller)
@@ -246,7 +246,6 @@ public class ModifiersManager : MonoBehaviour
             case "MotorRestriction": defaultModifiers.motorRestriction = (bool)val; break;
             case "MotorRestrictionUpper": defaultModifiers.motorRestrictionUpper = (float)val; break;
             case "MotorRestrictionLower": defaultModifiers.motorRestrictionLower = (float)val; break;
-            case "PerformanceFeedback": defaultModifiers.performanceFeedback = (PerformanceFeedback)val; break;
             case "Embodiment": defaultModifiers.embodiment = (Embodiment)val; break;
             default: break;
         }
@@ -272,7 +271,6 @@ public class ModifiersManager : MonoBehaviour
         SetPrismOffset(modifiers.prismOffset.Value);
         SetMainController(modifiers.controllerSetup.Value);
         SetControllerEnabled(modifiers.controllerSetup.Value, true);
-        SetPerformanceFeedback(modifiers.performanceFeedback.Value);
         SetEmbodiment(modifiers.embodiment.Value);
         // remove the thing to force when it's = null and check if it still execute everything
     }
@@ -350,8 +348,12 @@ public class ModifiersManager : MonoBehaviour
         });
     }
 
-
     public void SetPerformanceFeedback(PerformanceFeedback value)
+    {
+        SetPerformanceFeedback(value, performanceFeedbackText);
+    }
+
+    public void SetPerformanceFeedback(PerformanceFeedback value, bool withText)
     {
         bool actionFeedback = false;
         bool operationFeedback = false;
@@ -373,7 +375,7 @@ public class ModifiersManager : MonoBehaviour
                 break;
         }
 
-        bool withText = performanceFeedbackText;
+        performanceFeedbackText = withText;
         // Apply values to all modifiers
         wallManager.SetActionPerformanceFeedback(actionFeedback, withText);
         foreach (Pointer c in rightControllerPointers)
@@ -398,7 +400,7 @@ public class ModifiersManager : MonoBehaviour
 
         modifierUpdateEvent.Invoke($"PerformanceFeedback", Enum.GetName(typeof(PerformanceFeedback), value));
 
-        this.performanceFeedback = value;
+        currentModifiers.performanceFeedback = value;
     }
 
     public void SetMotorRestriction(bool value)
@@ -716,7 +718,7 @@ public class ModifiersManager : MonoBehaviour
     }
     public void SetJudgementType(JudgementType value)
     {
-        if (judgementType == value) return;
+        if (currentModifiers.judgementType == value) return;
         performanceManager.SetJudgementType(value);
 
         // Raises an Event and updates a PersistentEvent's parameter (in consequence, a PersistentEvent will also be raised)
@@ -727,7 +729,7 @@ public class ModifiersManager : MonoBehaviour
 
         modifierUpdateEvent.Invoke($"JudgementType", Enum.GetName(typeof(JudgementType), value));
 
-        this.judgementType = value;
+        currentModifiers.judgementType = value;
     }
 
     // Sets the level of embodiment used by the game. (Show hands (including controller) or just cursor).
